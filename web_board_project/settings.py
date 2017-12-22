@@ -94,16 +94,16 @@ WSGI_APPLICATION = 'web_board_project.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'WebBoard',
-        'USER':'root',
-        'PASSWORD':'kajika',
-        'PORT':'3306',
-        'HOST': 'localhost',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'WebBoard',
+#         'USER':'root',
+#         'PASSWORD':'kajika',
+#         'PORT':'3306',
+#         'HOST': 'localhost',
+#     }
+# }
 
 
 # Password validation
@@ -148,13 +148,13 @@ STATICFILES_DIRS =[
     STATIC_DIR,
 ]
 
-# from decouple import config, Csv
-#
-# SECRET_KEY = config('SECRET_KEY')
-# DEBUG = config('DEBUG', default=False, cast=bool)
-# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=config('DATABASE_URL')
-#     )
-# }
+from decouple import config, Csv
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
